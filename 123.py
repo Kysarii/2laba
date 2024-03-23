@@ -5,6 +5,7 @@ with open('7.txt') as file:
         for num in sl:
             if all('0' <= num_str <= '1' for num_str in num):
                 if int(num,2) <= 8192 and int(num,2) % 2 == 0:
+                    b = str(num)
                     if re.fullmatch('[0-1]*000[0-1]*', b):
                         b = re.sub(r'000', '*', b)
                         if b.count("*") == 1:
