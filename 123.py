@@ -19,8 +19,8 @@ with open('7.txt') as file:
                     print('Число: ',b)
                     b = b.replace('000','*')
                     if b.count("*") <= 1:
-                        pos = b.find('*') + 1
-                        if pos ==0:
+                        pos = b.find('*')+1
+                        if pos == 0:
                             print('В числе нет серии 000')
                         else:
                             print("Номер позиции с которой начинается серия 000:", pos)
