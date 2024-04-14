@@ -15,7 +15,7 @@ with open('7.txt') as file:
         sl = line.split()
         for num in sl:
             b = num
-            if re.fullmatch('^(?!.*000.*000)[01]*0$', b):
+            if re.fullmatch('^(?!(.*000){2})[01]*0$', b):
                 if int(num, 2) <= 8192:
                     print('Число: ',b)
                     pos = b.find('000') + 1
@@ -25,6 +25,6 @@ with open('7.txt') as file:
                     b = b.replace('0','')
                     print("Число исключая 0:", b, '\n')
                 else:
-                    print('Число не подходит под условие\n')
+                    print('Число больше 8192\n')
             else:
-                print('Число не подходит под условие(четное, не более одной серии из 000 \n')
+                print('Число не подходит под условие\n')
