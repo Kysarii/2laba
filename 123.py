@@ -15,21 +15,16 @@ with open('7.txt') as file:
         sl = line.split()
         for num in sl:
             b = num
-            if re.fullmatch('[01]+', b):
-                if int(num, 2) <= 8192 and int(num, 2) % 2 == 0:
+            if re.fullmatch('^(?!.*000.*000)[01]*0$', b):
+                if int(num, 2) <= 8192:
                     print('Число: ',b)
-                    b = b.replace('000','*')
-                    if b.count("*") <= 1:
-                        pos = b.find('*')+1
-                        if pos == 0:
-                            print('В числе нет серии 000')
-                        else:
-                            print("Номер позиции с которой начинается серия 000:", pos)
-                        b = b.replace("*", "").replace('0','')
-                        print("Число исключая 0:", b, '\n')
-                    else:
-                        print('В числе 2 или больше серии из 000\n')
+                    pos = b.find('000') + 1
+                    if pos == 0:
+                        print('В числе нет серии 000')
+                    print("Номер позиции с которой начинается серия 000:", pos)
+                    b = b.replace('0','')
+                    print("Число исключая 0:", b, '\n')
                 else:
                     print('Число не подходит под условие\n')
             else:
-                print('Неверный формат числа\n')
+                print('Число не подходит под условие(четное, не более одной серии из 000 \n')
